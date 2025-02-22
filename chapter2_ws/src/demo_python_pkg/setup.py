@@ -20,7 +20,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'python_node = demo_python_pkg.python_node:main'
+            'python_node = demo_python_pkg.python_node:main',
+            'person_node = demo_python_pkg.person_node:main'
         ],
     },
 )
