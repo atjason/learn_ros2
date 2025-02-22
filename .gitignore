@@ -1,0 +1,36 @@
+# ROS2 build and install directories
+build/
+install/
+log/
+
+# Colcon metadata
+.colcon/
+
+# Python bytecode and cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+.env/
+
+# Editor/IDE specific files
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+
+# ROS2 launch and config files backup
+*.launch.py~
+*.yaml~
+*.params.yaml~
+
+# Package dependencies
+*.egg-info/
+Pipfile.lock
+poetry.lock
+
+test
