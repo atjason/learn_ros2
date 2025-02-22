@@ -17,7 +17,7 @@ class SysStatusNode(Node):
 
         msg = SystemStatus()
         msg.stamp = self.get_clock().now().to_msg()
-        msg.host_name = platform.code()
+        msg.host_name = platform.node()
         msg.cpu_percent = cpu_percent
         msg.memory_percent = memory_info.percent
         msg.memory_total = memory_info.total / 1024 / 1024
