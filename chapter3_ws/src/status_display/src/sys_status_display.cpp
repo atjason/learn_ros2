@@ -21,9 +21,9 @@ class SysStatusDisplay: public rclcpp::Node {
         QString get_qstr_from_msg(const SystemStatus::SharedPtr msg) {
             std::stringstream show_str;
             show_str
-                << '=================================\n';
-                // << 'Date:\t' << msg->stamp.sec << '\ts\n'
-                // << 'CPU:\t' << msg->cpu_percent << '\t%\n';
+                << '=================================\n'
+                << 'Date:\t' << msg->stamp.sec << '\ts\n'
+                << 'CPU:\t' << msg->cpu_percent << '\t%\n';
             return QString::fromStdString(show_str.str());
         } 
     
