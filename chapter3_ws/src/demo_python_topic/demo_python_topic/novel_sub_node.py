@@ -19,7 +19,7 @@ class NovelSubNode(Node):
     
     def speak_callback(self):
         speaker = espeakng.Speaker()
-        speaker.voice = 'cn'
+        speaker.voice = 'zh'
         while rclpy.ok:
             if self.novels_queue.qsize() > 0:
                 text = self.novels_queue.get()
