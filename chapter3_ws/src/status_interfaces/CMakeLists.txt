@@ -7,15 +7,12 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
-find_package(rosidl REQUIRED)
-find_package(default REQUIRED)
-find_package(generators REQUIRED)
-find_package(builtin REQUIRED)
-find_package(interfaces REQUIRED)
+find_package(rosidl_default_generators REQUIRED)
+find_package(builtin_interfaces REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/SystemStatus.msg"
-  DEPENDENCIES builtin_intefaces
+  DEPENDENCIES builtin_interfaces
 )
 
 if(BUILD_TESTING)

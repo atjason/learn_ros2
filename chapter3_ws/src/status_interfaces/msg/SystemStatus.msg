@@ -1,4 +1,4 @@
-builtin_intefaces/Time stamp
+builtin_interfaces/Time stamp
 string host_name
 float32 cpu_percent
 float32 memory_percent
