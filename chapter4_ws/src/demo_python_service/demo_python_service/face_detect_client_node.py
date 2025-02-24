@@ -9,9 +9,9 @@ from cv_bridge import CvBridge
 class FaceDetectorClient(Node):
   def __init__(self):
     super().__init__('face_detect_client_node')
-    self.client = self.create_client(FaceDetector, '/face_detect_client')
+    self.client = self.create_client(FaceDetector, '/face_detect') // Service Type, Service Name.
     self.bridge = CvBridge()
-    self.test_image_path = get_package_share_directory('demo_python_service') + '/resouce/face2.png'
+    self.test_image_path = get_package_share_directory('demo_python_service') + '/resource/face3.png'
     self.image = cv2.imread(self.test_image_path)
   
   def send_request(self):
@@ -22,7 +22,7 @@ class FaceDetectorClient(Node):
     request.image = self.bridge.cv2_to_imgmsg(self.image)
     
     future = self.client.call_async(request)
-    rclpy.spin_until_futuren_complete(self, future)
+    rclpy.spin_until_future_complete(self, future)
     
     response = future.result()
     self.get_logger().info(f'Get response. {response.number} faces, used {response.use_time}s.')
@@ -30,17 +30,17 @@ class FaceDetectorClient(Node):
 
   def show_face_locations(self, response):
     for i in range(response.number):
-      top = response[i]
-      right = response[i]
-      bottom = response[i]
-      left = response[i]
-      cv2.rectangle(self.image, (left, top), (right, botto), (255, 0, 0), 2)
+      top = response.top[i]
+      right = response.right[i]
+      bottom = response.bottom[i]
+      left = response.left[i]
+      cv2.rectangle(self.image, (left, top), (right, bottom), (255, 0, 0), 2)
       cv2.imshow('Face Detection Result', self.image)
       cv2.waitKey(0)
 
 def main():
   rclpy.init()
-  node.get_logger().info('Face Detector Client started.')
   face_detect_client = FaceDetectorClient()
+  face_detect_client.get_logger().info('Face Detector Client started.')
   face_detect_client.send_request()
   rclpy.shutdown()
