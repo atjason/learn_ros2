@@ -42,14 +42,14 @@ class FaceDetectorClient(Node):
     cv2.waitKey(0)
   
   def call_set_parameters(self, parameters):
-    client = self.create_client(SetParameters, '/face_detect_node/set_parameters')
-    while not client.wait_for_service(timeout_sec=1.0):
+    update_param_client = self.create_client(SetParameters, '/face_detect_node/set_parameters')
+    while not update_param_client.wait_for_service(timeout_sec=1.0):
       self.get_logger().info('Wait for set_parameters service.')
     
     request = SetParameters.Request()
     request.parameters = parameters
     
-    future = client.call_async(request)
+    future = update_param_client.call_async(request)
     rclpy.spin_until_future_complete(self, future)
     response = future.result()
     return response
