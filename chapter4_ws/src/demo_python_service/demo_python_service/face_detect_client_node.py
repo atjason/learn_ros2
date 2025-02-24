@@ -9,7 +9,7 @@ from cv_bridge import CvBridge
 class FaceDetectorClient(Node):
   def __init__(self):
     super().__init__('face_detect_client_node')
-    self.client = self.create_client(FaceDetector, '/face_detect') // Service Type, Service Name.
+    self.client = self.create_client(FaceDetector, '/face_detect') # Service Type, Service Name.
     self.bridge = CvBridge()
     self.test_image_path = get_package_share_directory('demo_python_service') + '/resource/face3.png'
     self.image = cv2.imread(self.test_image_path)
@@ -35,8 +35,9 @@ class FaceDetectorClient(Node):
       bottom = response.bottom[i]
       left = response.left[i]
       cv2.rectangle(self.image, (left, top), (right, bottom), (255, 0, 0), 2)
-      cv2.imshow('Face Detection Result', self.image)
-      cv2.waitKey(0)
+    
+    cv2.imshow('Face Detection Result', self.image)
+    cv2.waitKey(0)
 
 def main():
   rclpy.init()
