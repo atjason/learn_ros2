@@ -1,15 +1,15 @@
 import math
 import rclpy
 from rclpy.node import Node
-from tf2_ros import StaticTransformBoradcaster
+from tf2_ros import StaticTransformBroadcaster
 from geometry_msgs.msg import TransformStamped
-from tr_transformations import quaternion_from_euler
+from tf_transformations import quaternion_from_euler
 
 class StaticTFBoradcaster(Node):
   def __init__(self):
     super().__init__('static_tf2_broadcaster')
-    self.static_broadcaster = StaticTransformBoradcaster(self)
-    self.pubish_static_tf()
+    self.static_broadcaster = StaticTransformBroadcaster(self)
+    self.publish_static_tf()
   
   def publish_static_tf(self):
     transform = TransformStamped()
@@ -26,11 +26,11 @@ class StaticTFBoradcaster(Node):
     transform.transform.rotation.z = rotation_quat[2]
     transform.transform.rotation.w = rotation_quat[3]
     
-    self.static_broadcaster.sendTransfomr(transform)
+    self.static_broadcaster.sendTransform(transform)
     self.get_logger().info(f'Publish TF: {transform}')
 
 def main():
   rclpy.init()
   node = StaticTFBoradcaster()
-  rclpy.super(node)
+  rclpy.spin(node)
   rclpy.shutdown()

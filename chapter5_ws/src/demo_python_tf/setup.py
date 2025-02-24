@@ -20,6 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'static_tf2_broadcaster = demo_python_tf.static_tf2_broadcaster:main'
         ],
     },
 )
