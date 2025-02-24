@@ -5,6 +5,8 @@ from sensor_msgs.msg import Image
 from ament_index_python.packages import get_package_share_directory
 import cv2
 from cv_bridge import CvBridge
+from rcl_interfaces.srv import SetParameters
+from rcl_interfaces.msg import Parameter, ParameterValue, ParameterType
 
 class FaceDetectorClient(Node):
   def __init__(self):
@@ -26,7 +28,7 @@ class FaceDetectorClient(Node):
     
     response = future.result()
     self.get_logger().info(f'Get response. {response.number} faces, used {response.use_time}s.')
-    self.show_face_locations(response)
+    # self.show_face_locations(response)
 
   def show_face_locations(self, response):
     for i in range(response.number):
@@ -38,10 +40,41 @@ class FaceDetectorClient(Node):
     
     cv2.imshow('Face Detection Result', self.image)
     cv2.waitKey(0)
+  
+  def call_set_parameters(self, parameters):
+    client = self.create_client(SetParameters, '/face_detect_node/set_parameters')
+    while not client.wait_for_service(timeout_sec=1.0):
+      self.get_logger().info('Wait for set_parameters service.')
+    
+    request = SetParameters.Request()
+    request.parameters = parameters
+    
+    future = client.call_async(request)
+    rclpy.spin_until_future_complete(self, future)
+    response = future.result()
+    return response
+  
+  def update_detect_model(self, model):
+    param = Parameter()
+    param.name = 'face_locations_model'
+    
+    new_model_value = ParameterValue()
+    new_model_value.type = ParameterType.PARAMETER_STRING
+    new_model_value.string_value = model
+    
+    response = self.call_set_parameters([param])
+    for result in response.results:
+      if result.successful:
+        self.get_logger().info(f'Set {param.name} to {model}')
+      else:
+        self.get_logger().info(f'Failed to set param. Reason: {result.reason}')
 
 def main():
   rclpy.init()
   face_detect_client = FaceDetectorClient()
   face_detect_client.get_logger().info('Face Detector Client started.')
+  face_detect_client.update_detect_model('hog')
+  face_detect_client.send_request()
+  face_detect_client.update_detect_model('cnn')
   face_detect_client.send_request()
   rclpy.shutdown()
