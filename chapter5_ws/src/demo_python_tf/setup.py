@@ -22,6 +22,7 @@ setup(
         'console_scripts': [
             'static_tf2_broadcaster = demo_python_tf.static_tf2_broadcaster:main',
             'dynamic_tf2_broadcaster = demo_python_tf.dynamic_tf2_broadcaster:main',
+            'tf2_listener = demo_python_tf.tf2_listener:main',
         ],
     },
 )
