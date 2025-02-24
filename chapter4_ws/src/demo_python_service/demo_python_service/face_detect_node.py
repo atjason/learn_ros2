@@ -1,6 +1,6 @@
 import rclpy
 from rclpy.node import Node
-from chatper4_interfaces.srv import FaceDetector
+from chapter4_interfaces.srv import FaceDetector
 from ament_index_python.packages import get_package_share_directory
 from cv_bridge import CvBridge
 import cv2
