@@ -9,6 +9,8 @@
   <xacro:include filename="$(find firstbot_description)/urdf/fishbot/actuator/wheel.urdf.xacro" />
   <xacro:include filename="$(find firstbot_description)/urdf/fishbot/actuator/caster.urdf.xacro" />
 
+  <xacro:include filename="$(find firstbot_description)/urdf/fishbot/plurgins/gazebo_control_plurgin.xacro" />
+
   <xacro:base_xacro length="0.12" radius="0.1" />
 
   <xacro:imu_xacro xyz="0.0 0.0 0.02" />
@@ -21,4 +23,5 @@
   <xacro:caster_xacro caster_name="front_caster" xyz="0.08 0.0 -0.076" />
   <xacro:caster_xacro caster_name="back_caster" xyz="-0.08 0.0 -0.076" />
 
+  <xacro:gazebo_control_plurgin />
 </robot>
