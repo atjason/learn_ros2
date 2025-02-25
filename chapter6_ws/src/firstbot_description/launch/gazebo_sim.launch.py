@@ -29,6 +29,11 @@ def generate_launch_description():
     ),
     launch_arguments=[('world', default_gazebo_world_path), ('verbose', 'true')]
   )
+  action_spawn_entity = launch_ros.actions.Node(
+    package='gazebo_ros',
+    executable='spawn_entity.py',
+    arguments=['-topic', '/robot_description', '-entity', 'fishbot'],
+  )
   # joint_state_publisher_node = launch_ros.actions.Node(
   #   package='joint_state_publisher',
   #   executable='joint_state_publisher',
@@ -43,5 +48,6 @@ def generate_launch_description():
     # joint_state_publisher_node,
     robot_state_publisher_node,
     action_launch_gazebo,
+    action_spawn_entity,
     # rviz_node,
   ])
