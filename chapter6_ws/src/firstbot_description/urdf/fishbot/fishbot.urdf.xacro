@@ -8,5 +8,5 @@
   <xacro:base_xacro length="0.12" radius="0.1" />
   <xacro:imu_xacro xyz="0.0 0.0 0.02" />
   <xacro:camera_xacro xyz="0.1 0.0 0.075" />
-  <xacro:laser_xacro xyz="0.0 0.0 0.1" />
+  <xacro:laser_xacro xyz="0.0 0.0 0.11" />
 </robot>
