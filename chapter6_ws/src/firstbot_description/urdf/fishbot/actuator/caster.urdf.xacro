@@ -9,6 +9,12 @@
           <sphere radius="0.016"/>
         </geometry>
       </visual>
+      <collision>
+        <origin xyz="0.0 0.0 0.0" rpy="0 0.0 0.0" />
+        <geometry>
+          <sphere radius="0.016"/>
+        </geometry>
+      </collision>
       <material name="yellow">
         <color rgba="1.0 1.0 0.0 0.8"/>
       </material>
