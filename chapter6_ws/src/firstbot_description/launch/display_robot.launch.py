@@ -5,6 +5,7 @@ from ament_index_python.packages import get_package_share_directory
 def generate_launch_description():
   urdf_tutorial_path = get_package_share_directory('firstbot_description')
   default_model_path = urdf_tutorial_path + '/urdf/first_robot.urdf'
+  default_rviz_path = urdf_tutorial_path + '/config/display_robot_model.rviz'
 
   action_declare_arg_mode_path = launch.actions.DeclareLaunchArgument(
     name='model', default_value=str(default_model_path),
@@ -28,6 +29,7 @@ def generate_launch_description():
   rviz_node = launch_ros.actions.Node(
     package='rviz2',
     executable='rviz2',
+    arguments=['-d', default_rviz_path],
   )
   return launch.LaunchDescription([
     action_declare_arg_mode_path,
