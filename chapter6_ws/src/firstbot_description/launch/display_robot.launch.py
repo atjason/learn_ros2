@@ -4,7 +4,7 @@ from ament_index_python.packages import get_package_share_directory
 
 def generate_launch_description():
   urdf_tutorial_path = get_package_share_directory('firstbot_description')
-  default_model_path = urdf_tutorial_path + '/urdf/first_robot.urdf'
+  default_model_path = urdf_tutorial_path + '/urdf/first_robot.xacro'
   default_rviz_path = urdf_tutorial_path + '/config/display_robot_model.rviz'
 
   action_declare_arg_mode_path = launch.actions.DeclareLaunchArgument(
@@ -13,7 +13,7 @@ def generate_launch_description():
   )
   robot_description = launch_ros.parameter_descriptions.ParameterValue(
     launch.substitutions.Command(
-      ['cat ', launch.substitutions.LaunchConfiguration('model')],
+      ['xacro ', launch.substitutions.LaunchConfiguration('model')],
     ),
     value_type=str
   )
