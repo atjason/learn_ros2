@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-    <xacro:macro name="gazebo_sensor_plurgin">
+    <xacro:macro name="gazebo_sensor_plugin">
         <gazebo reference="laser_link">
             <sensor name="laserscan" type="ray">
                 <plugin name="laserscan" filename="libgazebo_ros_ray_sensor.so">
