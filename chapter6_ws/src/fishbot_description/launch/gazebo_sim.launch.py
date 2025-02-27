@@ -43,11 +43,25 @@ def generate_launch_description():
   #   executable='rviz2',
   #   arguments=['-d', default_rviz_path],
   # )
+  
+  # 加载并激活 fishbot_joint_state_broadcaster 控制器
+  load_joint_state_controller = launch.actions.ExecuteProcess(
+    cmd=['ros2', 'control', 'load_controller', '--set-state', 'active',
+        'fishbot_joint_state_broadcaster'],
+    output='screen'
+  )
+    
   return launch.LaunchDescription([
     action_declare_arg_mode_path,
     # joint_state_publisher_node,
     robot_state_publisher_node,
     action_launch_gazebo,
     action_spawn_entity,
+    # 事件动作，当加载机器人结束后执行    
+    launch.actions.RegisterEventHandler(
+        event_handler=launch.event_handlers.OnProcessExit(
+            target_action=action_spawn_entity,
+            on_exit=[load_joint_state_controller],)
+        ),
     # rviz_node,
   ])
