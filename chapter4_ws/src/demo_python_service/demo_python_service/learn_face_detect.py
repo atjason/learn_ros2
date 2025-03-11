@@ -10,3 +10,6 @@ def main():
     cv2.rectangle(image, (left, top), (right, bottom), (255, 0, 0), 4)
   cv2.imshow('Face Detection', image)
   cv2.waitKey(0)
+
+if __name__ == "__main__":
+  main()
