@@ -16,6 +16,7 @@ class StaticTFBoradcaster(Node):
     transform.header.stamp = self.get_clock().now().to_msg()
     transform.header.frame_id = "base_link"
     transform.child_frame_id = "camera_link"
+    
     transform.transform.translation.x = 0.5
     transform.transform.translation.y = 0.3
     transform.transform.translation.z = 0.6
