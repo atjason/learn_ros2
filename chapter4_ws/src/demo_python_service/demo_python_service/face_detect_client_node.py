@@ -28,7 +28,7 @@ class FaceDetectorClient(Node):
     
     response = future.result()
     self.get_logger().info(f'Get response. {response.number} faces, used {response.use_time}s.')
-    # self.show_face_locations(response)
+    self.show_face_locations(response)
 
   def show_face_locations(self, response):
     for i in range(response.number):
@@ -55,12 +55,13 @@ class FaceDetectorClient(Node):
     return response
   
   def update_detect_model(self, model):
-    param = Parameter()
-    param.name = 'face_locations_model'
-    
     new_model_value = ParameterValue()
     new_model_value.type = ParameterType.PARAMETER_STRING
     new_model_value.string_value = model
+    
+    param = Parameter()
+    param.name = 'face_locations_model'
+    param.value = new_model_value
     
     response = self.call_set_parameters([param])
     for result in response.results:
@@ -75,6 +76,6 @@ def main():
   face_detect_client.get_logger().info('Face Detector Client started.')
   face_detect_client.update_detect_model('hog')
   face_detect_client.send_request()
-  face_detect_client.update_detect_model('cnn')
-  face_detect_client.send_request()
+  # face_detect_client.update_detect_model('cnn')
+  # face_detect_client.send_request()
   rclpy.shutdown()
