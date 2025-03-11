@@ -7,3 +7,7 @@ def main():
     node.get_logger().info('Hello Python')
     rclpy.spin(node)
     rclpy.shutdown()
+
+# run via `python3 python_node.py`
+if __name__ == "__main__":
+    main()
