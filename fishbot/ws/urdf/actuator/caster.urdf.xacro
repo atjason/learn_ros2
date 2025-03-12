@@ -27,6 +27,10 @@
       <origin xyz="${xyz}" rpy="0 0 0" />
       <axis xyz="0 0 0"/>
     </joint>
+
+    <gazebo reference="${caster_name}_link">
+      <material>Gazebo/DarkGrey</material>
+    </gazebo>
+
   </xacro:macro>
-  
 </robot>
