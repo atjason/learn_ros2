@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:include filename="$(find fishbot)/urdf/common_inertia.xacro" />
   <xacro:macro name="caster_xacro" params="caster_name xyz">
     <link name="${caster_name}_link">
       <visual>
@@ -17,6 +18,7 @@
       <material name="yellow">
         <color rgba="1.0 1.0 0.0 0.8"/>
       </material>
+      <xacro:sphere_inertia m="0.05" r="016" />
     </link>
 
     <joint name="${caster_name}_joint" type="fixed">
