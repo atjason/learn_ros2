@@ -51,7 +51,7 @@ Visualization Manager:
       Value: true
     - Alpha: 1
       Class: rviz_default_plugins/RobotModel
-      Collision Enabled: false
+      Collision Enabled: true
       Description File: ""
       Description Source: Topic
       Description Topic:
@@ -67,12 +67,26 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
+        back_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        base_footprint:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
         base_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
         camera_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        front_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -88,6 +102,16 @@ Visualization Manager:
           Show Trail: false
           Value: true
         laser_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        left_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        right_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -99,15 +123,21 @@ Visualization Manager:
       TF Prefix: ""
       Update Interval: 0
       Value: true
-      Visual Enabled: true
+      Visual Enabled: false
     - Class: rviz_default_plugins/TF
       Enabled: true
       Frame Timeout: 15
       Frames:
         All Enabled: true
+        back_link:
+          Value: true
+        base_footprint:
+          Value: true
         base_link:
           Value: true
         camera_link:
+          Value: true
+        front_link:
           Value: true
         imu_link:
           Value: true
@@ -115,26 +145,39 @@ Visualization Manager:
           Value: true
         laser_link:
           Value: true
-      Marker Scale: 0.30000001192092896
+        left_link:
+          Value: true
+        right_link:
+          Value: true
+      Marker Scale: 0.25
       Name: TF
       Show Arrows: false
       Show Axes: false
       Show Names: true
       Tree:
-        base_link:
-          camera_link:
-            {}
-          imu_link:
-            {}
-          laser_cylinder_link:
-            laser_link:
+        base_footprint:
+          base_link:
+            back_link:
+              {}
+            camera_link:
+              {}
+            front_link:
+              {}
+            imu_link:
+              {}
+            laser_cylinder_link:
+              laser_link:
+                {}
+            left_link:
+              {}
+            right_link:
               {}
       Update Interval: 0
       Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
-    Fixed Frame: base_link
+    Fixed Frame: base_footprint
     Frame Rate: 30
   Name: root
   Tools:
@@ -177,25 +220,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 0.47338801622390747
+      Distance: 0.5827945470809937
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0
-        Y: 0
-        Z: 0
+        X: -0.04176454246044159
+        Y: -0.01487743016332388
+        Z: 0.1352507323026657
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.23039788007736206
+      Pitch: 0.30039820075035095
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 1.1403980255126953
+      Yaw: 0.6753981113433838
     Saved: ~
 Window Geometry:
   Displays:
@@ -213,5 +256,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1524
-  X: -32
-  Y: -32
+  X: 0
+  Y: 0

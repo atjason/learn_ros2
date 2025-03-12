@@ -8,6 +8,12 @@
           <cylinder radius='0.01' length='0.1' />
         </geometry>
       </visual>
+      <collision>
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+        <geometry>
+          <cylinder radius='0.01' length='0.1' />
+        </geometry>
+      </collision>
       <material name="dark_green">
         <color rgba="0.0 1.0 0.0 0.9"/>      
       </material>
@@ -20,6 +26,12 @@
           <cylinder radius='0.02' length='0.02' />
         </geometry>
       </visual>
+      <collision>
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+        <geometry>
+          <cylinder radius='0.02' length='0.02' />
+        </geometry>
+      </collision>
       <material name="light_green">
         <color rgba="0.0 1.0 0.0 0.7"/>
       </material>
