@@ -10,6 +10,7 @@
   <xacro:include filename="$(find fishbot)/urdf/actuator/caster.urdf.xacro" />
 
   <xacro:include filename="$(find fishbot)/urdf/plugins/gazebo_control_plugin.xacro" />
+  <xacro:include filename="$(find fishbot)/urdf/plugins/gazebo_sensor_plugin.xacro" />
 
   <xacro:base_xacro length="0.12" radius="0.1" />
 
@@ -23,5 +24,6 @@
   <xacro:caster_xacro caster_name="back" xyz="-0.08 0 -0.076" />
 
   <xacro:gazebo_control_plugin />
+  <xacro:gazebo_sensor_plugin />
 
 </robot>
