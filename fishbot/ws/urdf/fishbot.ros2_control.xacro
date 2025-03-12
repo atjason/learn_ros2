@@ -42,6 +42,6 @@
                 </ros> -->
             </plugin>
         </gazebo>
-        
+
     </xacro:macro>
 </robot>
