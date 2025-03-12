@@ -18,7 +18,7 @@
       <material name="yellow">
         <color rgba="1.0 1.0 0.0 0.8"/>
       </material>
-      <xacro:sphere_inertia m="0.05" r="016" />
+      <xacro:sphere_inertia m="0.05" r="0.016" />
     </link>
 
     <joint name="${caster_name}_joint" type="fixed">
