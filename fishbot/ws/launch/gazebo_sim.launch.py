@@ -52,11 +52,11 @@ def generate_launch_description():
   # )
   
   # 加载并激活 fishbot_joint_state_broadcaster 控制器
-  # load_joint_state_controller = launch.actions.ExecuteProcess(
-  #   cmd=['ros2', 'control', 'load_controller', '--set-state', 'active',
-  #        'fishbot_joint_state_broadcaster'],
-  #   output='screen'
-  # )
+  load_joint_state_controller = launch.actions.ExecuteProcess(
+    cmd=['ros2', 'control', 'load_controller', '--set-state', 'active',
+         'fishbot_joint_state_broadcaster'],
+    output='screen'
+  )
   
   # 加载并激活 fishbot_effort_controller 控制器
   # load_fishbot_effort_controller = launch.actions.ExecuteProcess(
@@ -75,11 +75,12 @@ def generate_launch_description():
     action_launch_gazebo,
     action_spawn_entity,
     # 事件动作，当加载机器人结束后执行    
-    # launch.actions.RegisterEventHandler(
-    #     event_handler=launch.event_handlers.OnProcessExit(
-    #         target_action=action_spawn_entity,
-    #         on_exit=[load_joint_state_controller],)
-    #     ),
+    launch.actions.RegisterEventHandler(
+        event_handler=launch.event_handlers.OnProcessExit(
+            target_action=action_spawn_entity,
+            on_exit=[load_joint_state_controller],
+          )
+        ),
     # launch.actions.RegisterEventHandler(
     #     event_handler=launch.event_handlers.OnProcessExit(
     #         target_action=load_joint_state_controller,
