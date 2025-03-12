@@ -11,7 +11,7 @@ find_package(ament_cmake REQUIRED)
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 
-install(DIRECTORY src/launch src/urdf
+install(DIRECTORY launch urdf
   DESTINATION share/${PROJECT_NAME}
 )
 
