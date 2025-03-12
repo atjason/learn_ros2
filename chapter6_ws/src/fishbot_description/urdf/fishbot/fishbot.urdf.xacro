@@ -27,6 +27,6 @@
   <xacro:caster_xacro caster_name="back_caster" xyz="-0.08 0.0 -0.076" />
 
   <!-- <xacro:gazebo_control_plugin /> -->
-  <xacro:gazebo_sensor_plugin />
-  <xacro:fishbot_ros2_control />
+  <!-- <xacro:gazebo_sensor_plugin /> -->
+  <!-- <xacro:fishbot_ros2_control /> -->
 </robot>

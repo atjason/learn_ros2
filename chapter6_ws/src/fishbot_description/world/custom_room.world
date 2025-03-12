@@ -631,7 +631,7 @@
       <camera name='user_camera'>
         <pose>18.1946 -12.2773 8.31253 0 0.033044 2.3837</pose>
         <view_controller>orbit</view_controller>
-        <projection_type>perspective</projection_type>
+        <projection_type>orthographic</projection_type>
       </camera>
     </gui>
   </world>
