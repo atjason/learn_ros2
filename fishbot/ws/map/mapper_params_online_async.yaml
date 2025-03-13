@@ -1,0 +1,3 @@
+ceres_solver_options:
+  num_threads: 8  # 设为 8，避免过载
+  max_num_iterations: 50  # 限制最大优化迭代次数，减少计算量
