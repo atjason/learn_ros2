@@ -26,7 +26,7 @@ class PatrolNode(BasicNavigator):
         # self.speach_client_ = self.create_client(SpeachText, "speech_text")
 
         # 订阅与保存图像相关定义
-        self.declare_parameter("image_save_path", "")
+        self.declare_parameter("image_save_path", "patrol_robot/images/")
         self.image_save_path = self.get_parameter("image_save_path").value
         self.bridge = CvBridge()
         self.latest_image = None
@@ -56,8 +56,10 @@ class PatrolNode(BasicNavigator):
         """
         调用服务播放语音
         """
-        while not self.speach_client_.wait_for_service(timeout_sec=1.0):
-            self.get_logger().info("语合成服务未上线，等待中。。。")
+        self.get_logger().info(text)
+        
+        # while not self.speach_client_.wait_for_service(timeout_sec=1.0):
+        #     self.get_logger().info("语合成服务未上线，等待中。。。")
 
         # request = SpeachText.Request()
         # request.text = text
